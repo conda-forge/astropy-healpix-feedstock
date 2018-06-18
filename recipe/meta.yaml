@@ -16,6 +16,10 @@ build:
 
 requirements:
   build:
+    - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]
+    - {{ pin_compatible('numpy') }}   # [win and (py35 or py36)]
+    - {{ compiler('c') }}
+  host:
     - {{ compiler('c') }}
   host:
     - python
@@ -24,8 +28,6 @@ requirements:
     - numpy         # [win and (py35 or py36)]
   run:
     - python
-    - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]
-    - {{ pin_compatible('numpy') }}   # [win and (py35 or py36)]
     - astropy >=1.2
 
 test:
