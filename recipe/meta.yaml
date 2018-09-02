@@ -1,6 +1,6 @@
 {% set name = "astropy-healpix" %}
-{% set version = "0.2" %}
-{% set sha256 = "301486b2b628373e65a8c86207811479a7fbf9fd04ca9b344cf0ce8e0e23a688" %}
+{% set version = "0.2.1" %}
+{% set sha256 = "c578f6ec0dfbc8bc73ad2bb64720a35fdfa0fb8bb7b481a180b616431b80a904" %}
 package:
   name: {{ name|lower }}
   version: {{ version }}
