@@ -26,12 +26,11 @@ requirements:
     - python
     - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]
     - {{ pin_compatible('numpy') }}   # [win and (py35 or py36)]
-    - astropy >=1.2
+    - astropy >=2.0
 
 test:
   imports:
     - astropy_healpix
-    - astropy_healpix.core_cython
 
 about:
   home: http://github.com/astropy/astropy-healpix
@@ -40,8 +39,8 @@ about:
   license_file: LICENSE.md
   summary: BSD-licensed HEALPix for Astropy
   description: BSD-licensed HEALPix for Astropy
-  doc_url: http://astropy-healpix.readthedocs.io
-  dev_url: http://github.com/astropy/astropy-healpix
+  doc_url: https://astropy-healpix.readthedocs.io
+  dev_url: https://github.com/astropy/astropy-healpix
 
 extra:
   recipe-maintainers:
