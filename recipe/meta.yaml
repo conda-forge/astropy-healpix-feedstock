@@ -1,6 +1,6 @@
 {% set name = "astropy-healpix" %}
-{% set version = "0.3.1" %}
-{% set sha256 = "d699b2a94b3235c1d4d3bf7a993b6684b08d55d453028748b2df6b2c6e92f21c" %}
+{% set version = "0.4" %}
+{% set sha256 = "8c9709ac923759c92eca6d2e623e734d0f417eed40ba835b77d99dec09e51aa2" %}
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -26,12 +26,11 @@ requirements:
     - python
     - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]
     - {{ pin_compatible('numpy') }}   # [win and (py35 or py36)]
-    - astropy >=1.2
+    - astropy >=2.0
 
 test:
   imports:
     - astropy_healpix
-    - astropy_healpix.core_cython
 
 about:
   home: http://github.com/astropy/astropy-healpix
@@ -40,8 +39,8 @@ about:
   license_file: LICENSE.md
   summary: BSD-licensed HEALPix for Astropy
   description: BSD-licensed HEALPix for Astropy
-  doc_url: http://astropy-healpix.readthedocs.io
-  dev_url: http://github.com/astropy/astropy-healpix
+  doc_url: https://astropy-healpix.readthedocs.io
+  dev_url: https://github.com/astropy/astropy-healpix
 
 extra:
   recipe-maintainers:
