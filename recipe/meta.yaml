@@ -1,6 +1,6 @@
 {% set name = "astropy-healpix" %}
-{% set version = "0.4" %}
-{% set sha256 = "8c9709ac923759c92eca6d2e623e734d0f417eed40ba835b77d99dec09e51aa2" %}
+{% set version = "0.5" %}
+{% set sha256 = "5ae15da796a840f221fb83e25de791e827b6921bc21a365d99bc1a59c7c0cdad" %}
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -11,8 +11,9 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt --offline --no-git
+  skip: true  # [py27]
 
 requirements:
   build:
