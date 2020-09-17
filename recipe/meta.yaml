@@ -30,6 +30,8 @@ requirements:
     - astropy >=2.0
 
 test:
+  requires:
+    - pytest-astropy
   imports:
     - astropy_healpix
 
