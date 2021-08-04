@@ -1,17 +1,17 @@
 {% set name = "astropy-healpix" %}
-{% set version = "0.5" %}
-{% set sha256 = "5ae15da796a840f221fb83e25de791e827b6921bc21a365d99bc1a59c7c0cdad" %}
+{% set version = "0.6" %}
+
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 409a6621c383641456c074f0f0350a24a4a58e910eaeef14e9bbce3e00ad6690
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt --offline --no-git
   skip: true  # [py27]
 
