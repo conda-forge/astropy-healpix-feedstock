@@ -3,7 +3,7 @@ About astropy-healpix
 
 Home: http://github.com/astropy/astropy-healpix
 
-Package license: BSD
+Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/astropy-healpix-feedstock/blob/master/LICENSE.txt)
 
