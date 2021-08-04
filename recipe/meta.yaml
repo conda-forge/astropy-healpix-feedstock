@@ -22,6 +22,9 @@ requirements:
     - python
     - pip
     - numpy
+    - setuptools_scm
+    - extension-helpers
+    - wheel
   run:
     - python
     - {{ pin_compatible('numpy') }}
