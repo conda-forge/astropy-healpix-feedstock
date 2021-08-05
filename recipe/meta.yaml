@@ -1,18 +1,18 @@
 {% set name = "astropy-healpix" %}
-{% set version = "0.5" %}
-{% set sha256 = "5ae15da796a840f221fb83e25de791e827b6921bc21a365d99bc1a59c7c0cdad" %}
+{% set version = "0.6" %}
+
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 409a6621c383641456c074f0f0350a24a4a58e910eaeef14e9bbce3e00ad6690
 
 build:
-  number: 1
-  script: python setup.py install --single-version-externally-managed --record record.txt --offline --no-git
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --install-option="--offline" --install-option="--no-git"
   skip: true  # [py27]
 
 requirements:
@@ -20,13 +20,14 @@ requirements:
     - {{ compiler('c') }}
   host:
     - python
-    - setuptools
-    - numpy         # [not (win and (py35 or py36))]
-    - numpy         # [win and (py35 or py36)]
+    - pip
+    - numpy
+    - setuptools_scm
+    - extension-helpers
+    - wheel
   run:
     - python
-    - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]
-    - {{ pin_compatible('numpy') }}   # [win and (py35 or py36)]
+    - {{ pin_compatible('numpy') }}
     - astropy >=2.0
 
 test:
@@ -37,7 +38,7 @@ test:
 
 about:
   home: http://github.com/astropy/astropy-healpix
-  license: BSD
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.md
   summary: BSD-licensed HEALPix for Astropy
