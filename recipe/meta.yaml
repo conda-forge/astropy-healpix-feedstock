@@ -11,7 +11,7 @@ source:
   sha256: 88c384eb4322997a58de8938e91ac9ff90f6a2b6cb2ae23e2169c7405add3ad8
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --install-option="--offline" --install-option="--no-git"
   skip: true  # [py27]
 
