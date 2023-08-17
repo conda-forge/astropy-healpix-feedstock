@@ -39,6 +39,9 @@ test:
     - astropy_healpix
   commands:
     - pip check
+    # The test suite runs in <20 seconds so is worth running here to
+    # make sure there are no issues with the C/Cython extensions
+    - pytest --pyargs astropy_healpix
   requires:
     - pip
 
