@@ -6,14 +6,13 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/astropy_healpix-{{ version }}.tar.gz
   sha256: 88c384eb4322997a58de8938e91ac9ff90f6a2b6cb2ae23e2169c7405add3ad8
 
 build:
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install . -vv
   number: 2
-  script: {{ PYTHON }} -m pip install . -vv --install-option="--offline" --install-option="--no-git"
-  skip: true  # [py27]
 
 requirements:
   build:
@@ -25,31 +24,34 @@ requirements:
     - python
     - pip
     - numpy
-    - setuptools_scm
+    - setuptools-scm
     - extension-helpers
     - wheel
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - astropy >=2.0
+    - astropy >=3
 
 test:
   requires:
     - pytest-astropy
   imports:
     - astropy_healpix
+  commands:
+    - pip check
+    # The test suite runs in <20 seconds so is worth running here to
+    # make sure there are no issues with the C/Cython extensions
+    - pytest --pyargs astropy_healpix
+  requires:
+    - pip
 
 about:
-  home: http://github.com/astropy/astropy-healpix
-  license: BSD-3-Clause
-  license_family: BSD
-  license_file: LICENSE.md
+  home: https://github.com/astropy/astropy-healpix
   summary: BSD-licensed HEALPix for Astropy
-  description: BSD-licensed HEALPix for Astropy
-  doc_url: https://astropy-healpix.readthedocs.io
-  dev_url: https://github.com/astropy/astropy-healpix
+  license: BSD-3-Clause
+  license_file: LICENSE.md
 
 extra:
   recipe-maintainers:
     - beckermr
-    - astrofrog-conda-forge
+    - astrofrog
