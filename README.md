@@ -3,17 +3,11 @@ About astropy-healpix-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/astropy-healpix-feedstock/blob/main/LICENSE.txt)
 
-Home: http://github.com/astropy/astropy-healpix
+Home: https://github.com/astropy/astropy-healpix
 
 Package license: BSD-3-Clause
 
 Summary: BSD-licensed HEALPix for Astropy
-
-Development: https://github.com/astropy/astropy-healpix
-
-Documentation: https://astropy-healpix.readthedocs.io
-
-BSD-licensed HEALPix for Astropy
 
 Current build status
 ====================
