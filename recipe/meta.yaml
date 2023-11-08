@@ -13,7 +13,7 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --install-option="--offline" --install-option="--no-git"
-  skip: true  # [py27]
+  skip: true  # [py<39]
 
 requirements:
   build:
