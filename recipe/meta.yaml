@@ -11,6 +11,7 @@ source:
   sha256: f482ef62a10e686303f38c66f08df17b9ddee5ad82219c23571ee80d76abeea3
   patches:
     - numpy-args.patch
+    - object-workaround.patch
 
 build:
   number: 0
