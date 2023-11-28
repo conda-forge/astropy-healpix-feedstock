@@ -1,5 +1,5 @@
 {% set name = "astropy-healpix" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: f482ef62a10e686303f38c66f08df17b9ddee5ad82219c23571ee80d76abeea3
-  patches:
-    - numpy-args.patch
-    - object-workaround.patch
+  sha256: ef8938bdf729757c380a8c1734794d7374ad00e0767fc4a2fa63a66bef126242
 
 build:
   number: 0
