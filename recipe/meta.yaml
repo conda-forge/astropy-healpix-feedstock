@@ -12,8 +12,8 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --install-option="--offline" --install-option="--no-git"
-  skip: true  # [py <= 27]
+  script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py < 39]
 
 requirements:
   build:
@@ -30,8 +30,8 @@ requirements:
     - wheel
   run:
     - python
-    - {{ pin_compatible('numpy') }}
-    - astropy >=2.0
+    - {{ pin_compatible('numpy', lower_bound='1.19') }}
+    - astropy >=3
 
 test:
   requires:
