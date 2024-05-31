@@ -11,7 +11,7 @@ source:
   sha256: de5d2a7ec97b167045066971f25a150d1e4061f07159be23649634db36e79746
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [py < 39]
 
@@ -21,6 +21,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - python
     - pip
@@ -30,7 +31,6 @@ requirements:
     - wheel
   run:
     - python
-    - {{ pin_compatible('numpy', lower_bound='1.19') }}
     - astropy >=3
 
 test:
