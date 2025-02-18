@@ -36,9 +36,12 @@ requirements:
 
 test:
   requires:
+    - hypothesis
     - pytest-astropy
   imports:
     - astropy_healpix
+  commands:
+    - pytest --pyargs astropy_healpix
 
 about:
   home: http://github.com/astropy/astropy-healpix
