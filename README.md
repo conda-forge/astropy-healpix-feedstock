@@ -373,4 +373,5 @@ Feedstock Maintainers
 
 * [@astrofrog](https://github.com/astrofrog/)
 * [@beckermr](https://github.com/beckermr/)
+* [@lpsinger](https://github.com/lpsinger/)
 
