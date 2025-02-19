@@ -1,5 +1,5 @@
 {% set name = "astropy-healpix" %}
-{% set version = "1.0.3" %}
+{% set version = "1.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +8,12 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: de5d2a7ec97b167045066971f25a150d1e4061f07159be23649634db36e79746
+  sha256: 03671df12a36ec3b357c244d5154b6786362ff5d80770675c7b24815101066e4
 
 build:
-  number: 3
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
-  skip: true  # [py < 39]
+  skip: true  # [py < 310]
 
 requirements:
   build:
@@ -26,6 +26,7 @@ requirements:
     - python
     - pip
     - numpy
+    - setuptools
     - setuptools_scm
     - extension-helpers
     - wheel
@@ -35,9 +36,12 @@ requirements:
 
 test:
   requires:
+    - hypothesis
     - pytest-astropy
   imports:
     - astropy_healpix
+  commands:
+    - pytest --pyargs astropy_healpix
 
 about:
   home: http://github.com/astropy/astropy-healpix
