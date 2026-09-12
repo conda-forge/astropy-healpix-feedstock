@@ -1,0 +1,67 @@
+schema_version: 1
+
+context:
+  name: astropy-healpix
+  version: "2.0.1"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: 0e3f1c94064c45da779900cb90c938df7aef99a924abb23eeb893b16540e77e6
+
+build:
+  number: 2
+  skip: match(python, "<3.10")
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - numpy
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+  host:
+    - python
+    - pip
+    - numpy
+    - setuptools
+    - setuptools_scm
+    - extension-helpers
+    - wheel
+  run:
+    - python
+    - astropy-base >=6.1
+    - numpy >=2
+
+tests:
+  - python:
+      imports:
+        - astropy_healpix
+      pip_check: false
+  - requirements:
+      run:
+        - hypothesis
+        - pytest-astropy
+    script:
+      - pytest --pyargs astropy_healpix
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE.md
+  summary: BSD-licensed HEALPix for Astropy
+  description: BSD-licensed HEALPix for Astropy
+  homepage: http://github.com/astropy/astropy-healpix
+  repository: https://github.com/astropy/astropy-healpix
+  documentation: https://astropy-healpix.readthedocs.io
+
+extra:
+  recipe-maintainers:
+    - lpsinger
+    - beckermr
+    - astrofrog
